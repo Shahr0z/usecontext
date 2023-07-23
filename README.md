@@ -1,79 +1,51 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>React App Theme Manage with Context Api and Custom Hooks</h1>
+    <p>
+      This repository contains code for a React app that uses the Context API and custom hooks to manage and handle app themes and colors. In this app, you can toggle between light and dark themes, and the colors of the components will change accordingly.
+    </p>
+    <h2>Getting Started</h2>
+    <ol>
+      <li>Clone the repository to your local machine.</li>
+      <li>Install the dependencies using <code>npm install</code>.</li>
+      <li>Run the app using <code>npm start</code>.</li>
+    </ol>
+    <h2>Features</h2>
+  <ul>
+    <li>App-wide theme management using React Native's context API</li>
+    <li>Custom hooks to manage and access theme-related colors dynamically</li>
+    <li>Ability to toggle between light and dark themes</li>
+    <li>Implementation of custom components (buttons and cards) based on the active theme</li>
+  </ul>
+    <h2>Demo</h2>
+https://github.com/Shahr0z/usecontext/assets/99717541/cffda177-e70f-488b-b9dd-7caabbb7b247
+ <h2>Context and Custom Hooks</h2>
+  <p>The core part of the theme manager is implemented using React Native's context API and custom hooks. The <code>ThemeContext</code> provides the current theme and a function to change it. The <code>useTheme</code> hook is used to access the theme and toggle function throughout the app.</p>
 
-# Getting Started
+  <h3>Context API (<code>index.js</code>)</h3>
+<pre><code>import React, { createContext, useState, useContext } from 'react';
+const ThemeContext = createContext();
+export const useTheme = () => useContext(ThemeContext);
+export const ThemeProvider = ({ children }) => {
+    const [theme, setTheme] = useState('light');
+    return (
+        &lt;ThemeContext.Provider value={{ theme, setTheme }}>
+            {children}
+        &lt;/ThemeContext.Provider>
+    );
+};
+</code></pre>
+<h3>Custom Hook (<code>useColors.js</code>)</h3>
+<pre><code>import { useTheme } from "../Context/Theme";
+import { darkTheme, lightTheme } from "../Theme";
+export const useColors = () => {
+    const { theme } = useTheme();
+    return theme === 'dark' ? darkTheme : lightTheme;
+};
+</code></pre>
+<h2>Contributing</h2>
+    <p>Contributions to this project are welcome. If you find any issues or have any suggestions for improvements, please feel free to create a pull request or open an issue.</p>
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
-
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+  </body>
+</html>
